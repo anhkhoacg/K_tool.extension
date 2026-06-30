@@ -1,3 +1,9 @@
+Layout:
+  - ACC_EU
+  - ----
+  - MISC1
+  - MISC2
+
 background:
   title: '#4d009dd1'
   slideout: '#0000ff'
