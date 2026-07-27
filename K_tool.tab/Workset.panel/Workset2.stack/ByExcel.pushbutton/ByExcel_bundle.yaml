@@ -1,0 +1,10 @@
+context: doc-workshared
+
+title: Create using text file
+
+tooltip: Create worksets using a text file. Put your values in a single column with no headers.
+
+author: 
+  - name: K_tool
+    email: khoa.le @ Haskoning  
+    inspired_by: BimGuru

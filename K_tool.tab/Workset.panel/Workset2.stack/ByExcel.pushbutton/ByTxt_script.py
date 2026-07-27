@@ -1,30 +1,25 @@
 # import pyrevit libraries
 from pyrevit import revit,DB,forms,script
-
 # get document
 doc = revit.doc
 
-# Prompt user to specify file path
-pathFile = forms.pick_file(files_filter='Excel Workbook (*.xlsx)|*.xlsx|''Excel 97-2003 Workbook|*.xls')
+# Prompt user to specify TXT file path
+pathFile = forms.pick_file(files_filter='Text File (*.txt)|*.txt')
 
 # Catch if no file selected
 if not pathFile:
 	script.exit()
 
-# import Excel dependent libraries
-from guRoo_xclUtils import *
+# Read workset names from TXT file (one workset name per line)
+try:
+	with open(pathFile, 'r') as f:
+		worksetNames = [line.strip() for line in f.readlines() if line.strip()]
+except:
+	forms.alert("Could not read TXT file.", title="Script cancelled")
+	script.exit()
 
-# Import excel data
-xcl = xclUtils([],pathFile)
-dat = xcl.xclUtils_import("Sheet1",2,0)
-
-# Try to get column data
-if dat[1]:
-	worksetNames = []
-	for row in dat[0]:
-		worksetNames.append(str(row[0]))
-else:
-	forms.alert("Data not found. Make sure Excel is closed, and on Sheet1.", title= "Script cancelled")
+if not worksetNames:
+	forms.alert("No workset names found in TXT file.", title="Script cancelled")
 	script.exit()
 
 # collect all worksets in document
