@@ -1,6 +1,6 @@
 context: doc-workshared
 
-title: Create using text file
+title: Create Worksets using text file
 
 tooltip: Create worksets using a text file. Put your values in a single column with no headers.
 
