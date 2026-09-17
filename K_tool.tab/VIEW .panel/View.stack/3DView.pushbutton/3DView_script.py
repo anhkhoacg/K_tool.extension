@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from Autodesk.Revit.UI.Selection import ObjectType
+
 from pyrevit import revit, DB, forms, script
 
 
@@ -477,20 +479,35 @@ if view_family_type is None:
 
 
 # ============================================================
-# COLLECT ELEMENTS VISIBLE IN ACTIVE VIEW
+# SELECT ELEMENTS
 # ============================================================
+
+selected_ids = uidoc.Selection.GetElementIds()
+
+if selected_ids:
+    selected_elements = [doc.GetElement(eid) for eid in selected_ids]
+else:
+    try:
+        references = uidoc.Selection.PickObjects(
+            ObjectType.Element,
+            "Select one or more elements, then click Finish"
+        )
+    except Exception:
+        script.exit()
+
+    selected_elements = [doc.GetElement(ref) for ref in references]
+
+selected_elements = [
+    element for element in selected_elements if element is not None
+]
+
+if not selected_elements:
+    forms.alert("No elements were selected.", exitscript=True)
+
 
 elements_to_process = []
 
-collector = (
-    DB.FilteredElementCollector(
-        doc,
-        active_view.Id
-    )
-    .WhereElementIsNotElementType()
-)
-
-for element in collector:
+for element in selected_elements:
 
     if not is_valid_model_element(element):
         continue
@@ -511,7 +528,7 @@ for element in collector:
 if not elements_to_process:
     forms.alert(
         "No eligible model elements with bounding boxes "
-        "were found in the active view.",
+        "were found in the selection.",
         exitscript=True
     )
 
