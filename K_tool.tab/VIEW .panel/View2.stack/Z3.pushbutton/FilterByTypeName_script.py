@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 __title__ = 'Filter View By Type Name'
 __author__ = 'Khoa le'
-__doc__ = """Select one element, then create/apply a view filter that hides every other
-            element of the same category whose Type Name is different from the
+__doc__ = """Select one element, get its type name, then create/apply a view filter that hides every SectionView whose view Name is not contains text from the
             selected element's type name.
 
-            Filter name pattern: "<Category>_<TypeName>_not equal"
+            Filter name pattern: "<Category>_View Name_<TypeName>_not Contains"
             Author: Khoa.Le @Haskoning"""
 
 import clr
@@ -31,12 +30,12 @@ doc = revit.doc
 uidoc = revit.uidoc
 
 
-def create_not_equals_rule(param_id, value):
-    """Handle the Revit-version differences in CreateNotEqualsRule's signature."""
+def create_not_Contains_rule(param_id, value):
+    """Handle the Revit-version differences in CreateNotContainsRule's signature."""
     try:
-        return ParameterFilterRuleFactory.CreateNotEqualsRule(param_id, value)
+        return ParameterFilterRuleFactory.CreateNotContainsRule(param_id, value)
     except TypeError:
-        return ParameterFilterRuleFactory.CreateNotEqualsRule(param_id, value, False)
+        return ParameterFilterRuleFactory.CreateNotContainsRule(param_id, value, False)
 
 
 try:
@@ -58,10 +57,10 @@ if elem_type is None:
 
 type_name = elem_type.get_Parameter(BuiltInParameter.ALL_MODEL_TYPE_NAME).AsString() or elem_type.Name
 
-filter_name = "{}_View Name_{}_not equal".format(category.Name, type_name)
+filter_name = "{}_View Name_{}_not Contains".format(category.Name, type_name)
 
 param_id = ElementId(BuiltInParameter.VIEW_NAME)
-rule = create_not_equals_rule(param_id, type_name)
+rule = create_not_Contains_rule(param_id, type_name)
 elem_filter = ElementParameterFilter(rule)
 categories = List[ElementId]([category.Id])
 
