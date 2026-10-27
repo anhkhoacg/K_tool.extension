@@ -1,1 +1,14 @@
 /K_tool.tab/Button creation.panel/
+
+# IDE
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

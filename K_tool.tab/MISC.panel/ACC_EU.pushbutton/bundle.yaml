@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-__title__ = 'Open in Forma'
-__author__ = 'Khoa le (at) Haskoning'
----
-__doc__ = """This script will open the current Revit project in Forma EU server (former Autodesk Construction Cloud) in your default web browser."""
+title: Open in Autodesk Docs
+tooltip: Open the current Revit cloud model in Autodesk Docs (EU) in your default web browser.
+author: Khoa Le (at) Haskoning

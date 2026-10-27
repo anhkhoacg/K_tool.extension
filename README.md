@@ -28,6 +28,11 @@ This is a personal learning project for Revit API and is provided free to use wi
   - **Grid 3D to 2D** :  Convert selected Revit Grids from 3D (Model) to 2D (ViewSpecific) in the active view.
   - **Add filter to current view'** : Add filter to current view with the option to search/filter from all filters in the model.
   - **change Background** : change Background :D 
+####  4. View Panel
+  - **3D ViewS** : Pick elements to create a section-boxed 3D view for each one, named after its Type Mark / Type Name.
+  - **SectionS** : Pick elements to create a cross section, an elevation section and a section-based plan for each one, named after its Type Mark.
+  - **Filter By Type Name** : Pick one element to create/apply a view filter that hides all elements of the same category with a different Type Name.
+  - **Filter View By Type Name** : Pick one element to create/apply a view filter that hides section views whose name does not contain its Type Name.
 
 ### License
 Free to use with no warranties :P
@@ -59,6 +64,12 @@ Công cụ của K là tiện ích mở rộng thanh công cụ cho pyRevit, đ�
 - **Grid 3D to 2D** : Chuyển grid 3D sang 2D 
 - **Add filter to current view** : Thêm filter vào view với tính năng search/filter.
 - **Change Background** :Thay đổi màu nền ( Trắng-đen-Xám)
+
+### 4. View Panel
+- **3D ViewS** : Chọn phần tử để tạo view 3D có section box cho từng phần tử, đặt tên theo Type Mark / Type Name
+- **SectionS** : Chọn phần tử để tạo mặt cắt ngang, mặt cắt đứng và mặt bằng (dạng section) cho từng phần tử, đặt tên theo Type Mark
+- **Filter By Type Name** : Chọn một phần tử để tạo filter ẩn các phần tử cùng category nhưng khác Type Name
+- **Filter View By Type Name** : Chọn một phần tử để tạo filter ẩn các section view có tên không chứa Type Name của phần tử
 
 ### Giấy phép
 Miễn phí sử dụng không kèm bảo hành :D

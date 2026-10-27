@@ -1,7 +1,8 @@
 layout:
-  - Workset.panel
-  - Rebar.panel
-  - MISC.panel
+  - Workset
+  - Rebar
+  - MISC
+  - View
 background:
   panel: '#ff0000'
   title: '#00ff00'
