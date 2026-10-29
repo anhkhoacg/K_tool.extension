@@ -1,0 +1,6 @@
+title: Filter VIEW By Type Name and Hide
+author: Khoa Le (at) Haskoning
+tooltip: |
+  Select one element, get its type name, then create/apply a view filter that hides every SectionView whose view name does not contain the selected element's type name.
+
+  Filter name pattern: "<Category>_View Name_<TypeName>_not Contains"

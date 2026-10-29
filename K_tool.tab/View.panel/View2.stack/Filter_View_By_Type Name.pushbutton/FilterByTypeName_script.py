@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-__title__ = 'Filter View By Type Name'
-__author__ = 'Khoa le'
-__doc__ = """Select one element, get its type name, then create/apply a view filter that hides every SectionView whose view Name is not contains text from the
-            selected element's type name.
-
-            Filter name pattern: "<Category>_View Name_<TypeName>_not Contains"
-            Author: Khoa.Le @Haskoning"""
 
 import clr
 
