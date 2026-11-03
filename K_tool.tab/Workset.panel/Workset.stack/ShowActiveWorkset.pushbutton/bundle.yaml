@@ -1,4 +1,5 @@
 title: Show WorkSet
 
 tooltip: Set current / Selected elemnets' Workset to Visible in active view
+context: Selection
 

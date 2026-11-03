@@ -1,0 +1,7 @@
+context: doc-workshared
+
+title: Export Worksets
+
+tooltip: Export all user worksets (name and "Visible in all views" setting) to a tab-separated text file.
+
+author: Khoa Le

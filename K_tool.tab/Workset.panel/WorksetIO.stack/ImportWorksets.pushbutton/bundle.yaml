@@ -1,0 +1,7 @@
+context: doc-workshared
+
+title: Import Worksets
+
+tooltip: Create worksets from a text file made with Export Worksets. One workset per line, optionally followed by a TAB and True/False for "Visible in all views". Lines starting with # are ignored; existing worksets are skipped.
+
+author: Khoa Le
