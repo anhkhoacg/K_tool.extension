@@ -1,0 +1,7 @@
+context: doc-workshared
+
+title: Delete Worksets
+
+tooltip: Select multiple worksets to delete, then either delete their elements or move them to another workset. Requires Revit 2022+.
+
+author: Khoa Le
