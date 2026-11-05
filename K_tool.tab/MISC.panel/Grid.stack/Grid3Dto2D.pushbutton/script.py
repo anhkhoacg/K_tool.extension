@@ -8,7 +8,7 @@ Convert selected Revit Grids from 3D (Model) to 2D (ViewSpecific) in the active 
 Works in pyRevit environment.
 """
 
-from Autodesk.Revit.DB import Grid, DatumEnds, DatumExtentType, Transaction
+from Autodesk.Revit.DB import Grid, DatumEnds, DatumExtentType, Transaction, FilteredElementCollector
 from Autodesk.Revit.Exceptions import InvalidOperationException
 
 # pyRevit built-in variables
@@ -23,7 +23,14 @@ try:
     grids = [g for g in grids if isinstance(g, Grid)]
 
     if not grids:
-        print("No Grid selected. Please select one or more grids and run again.")
+        grids = list(
+            FilteredElementCollector(doc, active_view.Id)
+            .OfClass(Grid)
+            .WhereElementIsNotElementType()
+        )
+
+    if not grids:
+        print("No grids found in active view.")
     else:
         t = Transaction(doc, "Convert Selected Grids to 2D in View")
         t.Start()
