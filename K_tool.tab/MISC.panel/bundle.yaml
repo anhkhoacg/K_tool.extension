@@ -3,6 +3,7 @@ layout:
   - '---'
   - MISC1
   - MISC2
+  - LockDim
 
 background:
   title: '#4d009dd1'
