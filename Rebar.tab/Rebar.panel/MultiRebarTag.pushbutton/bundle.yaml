@@ -1,0 +1,10 @@
+title: "Multi Rebar\nAnnotation"
+
+tooltip: >-
+  Add a Multi-Rebar Annotation to every applicable rebar set in the active view
+  (or only the pre-selected rebars). A set is applicable when it has 2+ bars,
+  its distribution runs in the view plane, and it is not already annotated.
+  The dimension line follows the set's distribution direction automatically.
+  Shift+Click to preview what would be annotated without creating anything.
+
+author: Khoa Le

@@ -203,6 +203,49 @@ def get_type_mark(element):
 
 
 # ============================================================
+# ELEMENT FILTERING
+# ============================================================
+
+def is_valid_model_element(element):
+    """Return True only for eligible 3D model elements."""
+
+    if element is None:
+        return False
+
+    if isinstance(element, DB.ElementType):
+        return False
+
+    if isinstance(element, DB.View):
+        return False
+
+    # Skip linework (model lines, detail lines, symbolic lines).
+    try:
+        if isinstance(element, DB.CurveElement):
+            return False
+    except Exception:
+        pass
+
+    try:
+        if element.ViewSpecific:
+            return False
+    except Exception:
+        pass
+
+    category = element.Category
+
+    if category is None:
+        return False
+
+    try:
+        if category.CategoryType != DB.CategoryType.Model:
+            return False
+    except Exception:
+        return False
+
+    return True
+
+
+# ============================================================
 # ORIENTATION HELPERS
 # ============================================================
 
@@ -457,6 +500,16 @@ elements = [element for element in elements if element is not None]
 if not elements:
     forms.alert("No elements were selected.", exitscript=True)
 
+eligible_elements = [
+    element for element in elements if is_valid_model_element(element)
+]
+
+if not eligible_elements:
+    forms.alert(
+        "No eligible model elements were found in the selection.",
+        exitscript=True
+    )
+
 
 section_view_family_type = get_section_view_family_type()
 
@@ -479,7 +532,7 @@ failed_elements = []
 
 with revit.Transaction("Create sections from selected elements"):
 
-    for element in elements:
+    for element in eligible_elements:
 
         world_bbox = get_world_bounding_box(element)
 
@@ -545,6 +598,7 @@ with revit.Transaction("Create sections from selected elements"):
 
 output.print_md("# Sections created from selection")
 output.print_md("**Selected elements:** {}".format(len(elements)))
+output.print_md("**Eligible model elements:** {}".format(len(eligible_elements)))
 output.print_md("**Views created:** {}".format(len(created_views)))
 output.print_md("**Failed:** {}".format(len(failed_elements)))
 

@@ -281,6 +281,14 @@ def is_valid_model_element(element):
     if isinstance(element, DB.View):
         return False
 
+    # Skip linework elements (model lines, detail lines, symbolic lines).
+    # These are not useful targets for per-element 3D section boxes.
+    try:
+        if isinstance(element, DB.CurveElement):
+            return False
+    except Exception:
+        pass
+
     try:
         if element.ViewSpecific:
             return False
