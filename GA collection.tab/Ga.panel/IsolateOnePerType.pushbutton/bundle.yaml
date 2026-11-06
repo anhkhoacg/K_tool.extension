@@ -1,0 +1,5 @@
+title: Isolate One Per Type
+
+tooltip: Temporarily isolate one element of each type in the active view. Pre-select elements to limit it to those elements' types; with nothing selected it uses every model element visible in the view. Shift+Click to also select the isolated elements.
+
+author: Khoa Le

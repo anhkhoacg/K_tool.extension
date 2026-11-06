@@ -1,0 +1,5 @@
+title: Centroid
+
+tooltip: Place a 3D cross of model lines at the centroid of each selected element (volume centroid of its solids; bounding-box centre if it has no solids). Pre-select elements or pick them after clicking. Shift+Click to place one marker at the combined centroid of all selected elements.
+
+author: Khoa Le
