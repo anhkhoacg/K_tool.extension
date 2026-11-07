@@ -1,0 +1,9 @@
+title:
+  en_us: Element View Set
+tooltip:
+  en_us: >-
+    For each selected element, create a 3D view, a plan and two sections
+    centred on its centroid. Each view isolates the element and hides
+    markers of views whose name does not contain the element's type name.
+    Views are named <TypeName>_3D / PLAN / SEC1 / SEC2.
+author: anhkhoa

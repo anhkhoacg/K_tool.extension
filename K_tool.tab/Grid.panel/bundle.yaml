@@ -1,3 +1,4 @@
 background:
-  title: '#4d009dd1'
-  slideout: '#00ggff'
+  panel: '#0b3d5c'
+  title: '#4d00dd'
+  slideout: '#00dfff'
